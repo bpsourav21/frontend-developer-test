@@ -9,7 +9,7 @@ import { AuthProvider } from "./helpers/AuthProvider";
 
 const App = () => {
   return (
-    <div className="container">
+    <div className="fluid-container">
       <BrowserRouter>
         <AuthProvider>
           <Routes>
