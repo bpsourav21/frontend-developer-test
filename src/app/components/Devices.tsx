@@ -1,24 +1,25 @@
 import { useEffect } from "react";
 import _ from "underscore";
-import { getDevices } from "../actions/devicesActions";
+import { getDevices } from "../actions/deviceActions";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { DeviceDto } from "../models/device";
-import { DeviceState } from "../reducers/deviceReducer";
 
 const Devices = () => {
-  const deviceState: DeviceState = useAppSelector((state) => state.device);
+  const devices = useAppSelector((state) => state.device.devices);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getDevices());
+    startDevicesPolling();
   }, []);
 
-  const devices = deviceState.devices;
-
-  console.log(devices);
+  const startDevicesPolling = () => {
+    dispatch(getDevices());
+    setTimeout(() => startDevicesPolling(), 5000);
+  };
 
   return (
     <div className="Devices">
       <h3 className="">Devices</h3>
+      <h3 className="">Devices count {devices.length}</h3>
       {_.map(devices, (device: DeviceDto) => {
         return <h5 key={"device_" + device.id}>{device.name}</h5>;
       })}
