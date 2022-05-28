@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import _ from "underscore";
+import { logout } from "../actions/authActions";
 import { getDevices } from "../actions/deviceActions";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { DeviceDto } from "../models/device";
 
 const Devices = () => {
   const devices = useAppSelector((state) => state.device.devices);
@@ -65,14 +65,21 @@ const Devices = () => {
         >
           <div>
             <h1 className="text-center text-bold">{totalDeviceOnline}</h1>
-            <h5 className="text-center">DEVICES ONLINE</h5>
+            <h5 className="text-center">{`DEVICE${
+              totalDeviceOnline > 1 ? "S" : ""
+            } ONLINE`}</h5>
           </div>
         </div>
         {deviceCircleBlock}
       </div>
       <div className="bottom-block">
         <button className="btn btn-md btn-light mx-2">Notify</button>
-        <button className="btn btn-md btn-dark mx-2">Logout</button>
+        <button
+          className="btn btn-md btn-dark mx-2"
+          onClick={() => dispatch(logout())}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

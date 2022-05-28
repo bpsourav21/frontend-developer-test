@@ -40,9 +40,7 @@ export const logout = () => {
 
 export const isUserAuthenticated = () => {
   return (dispatch: AppDispatch) => {
-    let isAuthPresent = !_.isEmpty(getAuthToken());
-    if (isAuthPresent) {
-      dispatch({ type: Auth.AUTHENTICATION_REQUEST, payload: true });
-    }
+    const isAuthPresent = !_.isEmpty(getAuthToken());
+    dispatch({ type: Auth.AUTHENTICATION_REQUEST, payload: isAuthPresent });
   };
 };
