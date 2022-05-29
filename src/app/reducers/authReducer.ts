@@ -1,4 +1,6 @@
+import _ from "underscore";
 import { Auth } from "../actions/actionTypes";
+import { getAuthToken } from "../helpers/storage";
 
 export interface AuthState {
   isLoading: boolean;
@@ -6,10 +8,11 @@ export interface AuthState {
   isAuthenticated: boolean;
 }
 
+const isAuthPresent = !_.isEmpty(getAuthToken());
 const initialState: AuthState = {
   isLoading: false,
   loginErrorMsg: "",
-  isAuthenticated: false,
+  isAuthenticated: isAuthPresent,
 };
 
 export const authReducer = (
