@@ -31,6 +31,11 @@ code {
   display: flex;
   align-items: center;
 }
+.login input,
+.login input:active,
+.login input:focus {
+  background-color: #eceff1 !important;
+}
 .mainWrapper .page {
   width: 100%;
   height: 100%;
