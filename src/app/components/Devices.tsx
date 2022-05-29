@@ -63,7 +63,7 @@ const Devices = () => {
             top: calculateMovement(centerBoxWidth),
           }}
         >
-          <div>
+          <div style={{ color: "#fff" }}>
             <h1 className="text-center text-bold">{totalDeviceOnline}</h1>
             <h5 className="text-center">{`DEVICE${
               totalDeviceOnline > 1 ? "S" : ""
