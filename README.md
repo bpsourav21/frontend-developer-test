@@ -44,3 +44,8 @@ solution.
 
 
 Good luck!
+
+## Instructions
+
+To run this project please run 
+`npm run start` 
