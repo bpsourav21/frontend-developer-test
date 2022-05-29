@@ -6,3 +6,10 @@ export interface DeviceDto {
 export interface DevicesResultDto {
   devices: DeviceDto[];
 }
+
+export interface NotificationData {
+  name: string;
+  email: string;
+  repoUrl: string;
+  message: string;
+}
